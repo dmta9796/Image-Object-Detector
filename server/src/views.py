@@ -6,4 +6,4 @@ def index(request):
 
 def data(request):
     print(request.body)
-    return HttpResponse('data', request)
+    return HttpResponse('data', request.body)
