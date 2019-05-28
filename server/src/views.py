@@ -7,5 +7,4 @@ def index(request):
 @csrf_exempt
 def data(request):
     print(request.body)
-    #c = {}
-    return HttpResponse('data', request.body)
+    return HttpResponse(request.body)
