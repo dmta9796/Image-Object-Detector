@@ -11,6 +11,7 @@ from PIL import Image
 dir_path = os.path.dirname(os.path.realpath(__file__))
 print(dir_path)
 import src.PyTorchYOLOv3.models as models
+import src.PyTorchYOLOv3.detect as detect
 
 def index(request):
     return HttpResponse("Hello, world. http response")
