@@ -13,6 +13,14 @@ print(dir_path)
 import src.PyTorchYOLOv3.models as models
 import src.PyTorchYOLOv3.detect as detect
 
+
+def image_to_byte_array(image:Image):
+  imgByteArr = io.BytesIO()
+  image.save(imgByteArr, format=image.format)
+  imgByteArr = imgByteArr.getvalue()
+  return imgByteArr
+
+
 def index(request):
     return HttpResponse("Hello, world. http response")
 
@@ -20,5 +28,6 @@ def index(request):
 def data(request):
     data = request.body
     image = Image.open(io.BytesIO(data))
-    print(image)
-    return HttpResponse(data)
+    processedimage = detect.detectimage(image)
+    print(processedimage)
+    return HttpResponse(image_to_byte_array(image))
