@@ -30,4 +30,4 @@ def data(request):
     image = Image.open(io.BytesIO(data))
     processedimage = detect.detectimage(image)
     print(processedimage)
-    return HttpResponse(image_to_byte_array(image))
+    return HttpResponse(image_to_byte_array(processedimage))
