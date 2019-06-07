@@ -4,6 +4,7 @@ import io
 import sys
 import os
 from PIL import Image
+import datetime
 # sys.path.append('./PyTorch-YOLOv3')
 #import src.PyTorch-YOLOv3.models
 # from man.PyTorchYOLOv3 import models
@@ -27,6 +28,8 @@ def index(request):
 def data(request):
     data = request.body
     image = Image.open(io.BytesIO(data))
+    start = datetime.datetime.now()
     processedimage = detect.detectimage(image)
-    print(processedimage)
+    end = datetime.datetime.now()
+    print(end-start)
     return HttpResponse(image_to_byte_array(processedimage))
