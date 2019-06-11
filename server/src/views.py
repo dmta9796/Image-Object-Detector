@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 import io
 import sys
 import os
+import zipfile
 from PIL import Image
 import datetime
 # sys.path.append('./PyTorch-YOLOv3')
@@ -31,5 +32,5 @@ def data(request):
     start = datetime.datetime.now()
     processedimage = detect.detectimage(image)
     end = datetime.datetime.now()
-    print(end-start)
+    print((end-start).total_seconds())
     return HttpResponse(image_to_byte_array(processedimage))
